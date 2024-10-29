@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/node": "^22.8.2",
     "eslint": "^9.13.0",
     "eslint-plugin-jsdoc": "^50.4.3",
     "jsdoc": "^4.0.4",
@@ -9,5 +10,3 @@
     "docs": "jsdoc -r ."
   }
 }
-
-

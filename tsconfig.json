@@ -13,7 +13,8 @@
     // Ensure that default and named imports work correctly
     "esModuleInterop": true,
     // Allow usage of async/await and other ESNext features
-    "lib": ["es2015", "esnext"]
+    // DOM library provides the "console" object and other browser APIs
+    "lib": ["dom", "es2015", "esnext"]
   },
   // Include all JavaScript files in the project
   "include": ["**/*.js"]

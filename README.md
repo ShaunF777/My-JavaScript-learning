@@ -105,6 +105,7 @@ suggestions and warnings about deprecated usage or potential errors.
 6. **Install  dependencies**:
     ```sh
     npm install --save-dev typescript
+    npm install @types/node --save-dev
 
 7. **Create or update tsconfig.json in your project root**:
     ```sh
@@ -114,6 +115,30 @@ suggestions and warnings about deprecated usage or potential errors.
             "allowJs": true
         },
         "include": ["**/*.js"]
+    }
+
+8. **This is what my tsconfig.json looks like after im done**:
+    ```sh
+    {
+      "compilerOptions": {
+        // Enable type checking for JavaScript files
+        "checkJs": true,
+        // Allow JavaScript files to be compiled
+        "allowJs": true,
+        // Include type definitions from DefinitelyTyped (for better IntelliSense)
+        "types": ["node"],
+        // Set the target ECMAScript version
+        "target": "es6",
+        // Specify the module system
+        "module": "commonjs",
+        // Ensure that default and named imports work correctly
+        "esModuleInterop": true,
+        // Allow usage of async/await and other ESNext features
+        // DOM library provides the "console" object and other browser APIs
+        "lib": ["dom", "es2015", "esnext"]
+      },
+      // Include all JavaScript files in the project
+      "include": ["**/*.js"]
     }
 
 8. **Enable type checking**: Add // @ts-check at the top of your JavaScript files.
