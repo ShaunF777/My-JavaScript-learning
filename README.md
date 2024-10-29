@@ -7,11 +7,12 @@
 
 <div align="left">
 
-## Introduction
-Welcome to my learning repo that showcases my JavaScript projects.
-Using different packages to increate productivity is my aim.
+## Welcome to my learning repo!
+Here I showcase my JavaScript learning projects, using different packages to increase productivity & documentation quality.
 
 This project also demonstrates how to set up a JavaScript project with enhanced documentation and type checking using JSDoc, ESLint, and TypeScript.
+
+Below you will find more instructions on getting these packages to work for you. This process was initiated after doinf some research and reading about it [here](https://www.pullrequest.com/blog/leveraging-jsdoc-for-better-code-documentation-in-javascript/#:~:text=JSDoc%20is%20a%20documentation%20syntax,into%20a%20detailed%20documentation%20website).
 
 ## ESLint with JSDoc:
 - **Purpose:** Enforces consistent JSDoc comments and validates them against the code.
@@ -20,7 +21,7 @@ This project also demonstrates how to set up a JavaScript project with enhanced 
 - Validates parameter names, types, and overall alignment with your code.
 - Provides warnings or errors for missing or incorrect JSDoc comments
 ## TypeScript with JSDoc:
-- **Purpose:** Leverage TypeScript to provide type checking based on JSDoc annotations in `.js` files.
+- **Purpose:** Use TypeScript to provide type checking based on JSDoc annotations in `.js` files.
 - **Benefits:**
 - Provides powerful type-checking based on JSDoc annotations.
 - Catches type-related errors early during development.
