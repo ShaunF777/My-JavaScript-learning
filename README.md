@@ -1,11 +1,12 @@
 <div align="center">
+
 # Learning JavaScript the right way
 
 <a name="top"></a>
-<div align="center">
 <img src="./assets/rootsinwater.jfif">
 
 <div align="left">
+
 ## Introduction
 This project demonstrates how to set up a JavaScript project with enhanced documentation and type checking using JSDoc, ESLint, and TypeScript.
 
@@ -40,6 +41,7 @@ This project demonstrates how to set up a JavaScript project with enhanced docum
     npm install eslint-plugin-jsdoc --save-dev
 
 3. **Create or update .eslintrc.json in your project root**:
+    NOTE: This configuration should enhance your workflow by ensuring your JSDoc comments are aligned and your types are consistent.
     ```sh
     {
     "plugins": ["jsdoc"],
@@ -58,7 +60,6 @@ This project demonstrates how to set up a JavaScript project with enhanced docum
         }]
     }
     }
-    NOTE: This configuration should enhance your workflow by ensuring your JSDoc comments are aligned and your types are consistent.
 
 4. **Install  dependencies**:
     ```sh
@@ -84,7 +85,6 @@ This project demonstrates how to set up a JavaScript project with enhanced docum
 - **TypeScript:**
     ```sh
     npx tsc --noEmit
-
 
  ## Contributing
  Feel free to fork this repository and create a pull request with your enhancements.
