@@ -7,18 +7,34 @@ function padRow(rowNumber, rowCount) {
   + " ".repeat(rowCount - rowNumber);
 }
 
-// TODO: use a different type of loop
-/*for (let i = 1; i <= count; i++) {
+/**Use different types of loops */
+for (let i = 1; i <= count; i++) {
   rows.push(padRow(i, count));
-}*/
+}
 
-/*while (rows.length < count) {
+let result = ""
+
+for (const row of rows) {
+  result = result + "\n" + row;
+}
+
+console.log(result);
+
+while (rows.length < count) {
   rows.push(padRow(rows.length + 1, count));
-}*/
+}
 
-/*for (let i = count; i > 0; i--) {
+result = ""
+
+for (const row of rows) {
+  result = result + "\n" + row;
+}
+
+console.log(result);
+
+for (let i = count; i > 0; i--) {
   rows.push(padRow(i, count));
-}*/
+}
 
 /**Arrays also have a .shift() method. This will remove the first element of the array, 
  * unlike .pop() which removes the last element. */
@@ -32,7 +48,7 @@ const unshifted = numbers.unshift(5);
 console.log(unshifted); // 3
 console.log(numbers); // [5, 2, 3]
 
-let result = ""
+result = ""
 
 for (const row of rows) {
   result = result + "\n" + row;
