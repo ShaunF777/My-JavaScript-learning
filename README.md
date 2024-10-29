@@ -12,7 +12,7 @@ Here I showcase my JavaScript learning projects, using different packages to inc
 
 This project also demonstrates how to set up a JavaScript project with enhanced documentation and type checking using JSDoc, ESLint, and TypeScript.
 
-Below you will find more instructions on getting these packages to work for you. This process was initiated after doinf some research and reading about it [here](https://www.pullrequest.com/blog/leveraging-jsdoc-for-better-code-documentation-in-javascript/#:~:text=JSDoc%20is%20a%20documentation%20syntax,into%20a%20detailed%20documentation%20website).
+Below you will find more instructions on getting these packages to work for you. This process was initiated after doing some research and reading about it [here](https://www.pullrequest.com/blog/leveraging-jsdoc-for-better-code-documentation-in-javascript/#:~:text=JSDoc%20is%20a%20documentation%20syntax,into%20a%20detailed%20documentation%20website).
 
 ## ESLint with JSDoc:
 - **Purpose:** Enforces consistent JSDoc comments and validates them against the code.
@@ -39,13 +39,13 @@ Below you will find more instructions on getting these packages to work for you.
    git clone git@github.com:ShaunF777/My-JavaScript_learning.git
    cd repo-name
 
-2. **Install eslint dependencies**:
+2. **Install ESLint dependencies**:
     ```sh
     npm install eslint --save-dev
     npm install eslint-plugin-jsdoc --save-dev
 
 3. **Create or update .eslintrc.json in your project root**:
-    NOTE: This configuration should enhance your workflow by ensuring your JSDoc comments are aligned and your types are consistent.
+    NOTE: This configuration should enhance your workflow by ensuring your JSDoc comments are aligned, and your types are consistent.
     ```sh
     {
     "plugins": ["jsdoc"],
