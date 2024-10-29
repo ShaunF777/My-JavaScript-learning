@@ -8,7 +8,10 @@
 <div align="left">
 
 ## Introduction
-This project demonstrates how to set up a JavaScript project with enhanced documentation and type checking using JSDoc, ESLint, and TypeScript.
+Welcome to my learning repo that showcases my JavaScript projects.
+Using different packages to increate productivity is my aim.
+
+This project also demonstrates how to set up a JavaScript project with enhanced documentation and type checking using JSDoc, ESLint, and TypeScript.
 
 ## ESLint with JSDoc:
 - **Purpose:** Enforces consistent JSDoc comments and validates them against the code.
@@ -86,6 +89,15 @@ This project demonstrates how to set up a JavaScript project with enhanced docum
     ```sh
     npx tsc --noEmit
 
- ## Contributing
+## Use Nodemon automatic restart while scripting:   
+1. **Install  dependencies**:
+    ```sh
+    npm install -g nodemon
+
+2. **Now run your code with nodemon instead of node**:
+    ```sh
+    nodemon app.js
+
+## Contributing
  Feel free to fork this repository and create a pull request with your enhancements.
  
