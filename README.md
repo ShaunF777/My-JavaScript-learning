@@ -19,7 +19,7 @@ JSDoc is highly versatile, supporting a wide array of tags to enrich your docume
 Utilizing these tags not only makes your documentation more informative but also assists in 
 code quality tools and IDEs to better understand your code, offering improved autocomplete 
 suggestions and warnings about deprecated usage or potential errors.
-Here are a few essential tags to incorporate:
+**Here are a few essential tags to incorporate:**
     ```sh
     @param {number}: Type to be passed into function.
     @returns {string}: Type to be returned by function.
