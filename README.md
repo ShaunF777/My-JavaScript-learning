@@ -1,9 +1,11 @@
+<div align="center">
 # Learning JavaScript the right way
 
 <a name="top"></a>
 <div align="center">
 <img src="./assets/rootsinwater.jfif">
 
+<div align="left">
 ## Introduction
 This project demonstrates how to set up a JavaScript project with enhanced documentation and type checking using JSDoc, ESLint, and TypeScript.
 
@@ -56,3 +58,34 @@ This project demonstrates how to set up a JavaScript project with enhanced docum
         }]
     }
     }
+    NOTE: This configuration should enhance your workflow by ensuring your JSDoc comments are aligned and your types are consistent.
+
+4. **Install  dependencies**:
+    ```sh
+    npm install --save-dev typescript
+
+5. **Create or update tsconfig.json in your project root**:
+    ```sh
+    {
+        "compilerOptions": {
+            "checkJs": true,
+            "allowJs": true
+        },
+        "include": ["**/*.js"]
+    }
+
+6. **Enable type checking**: Add // @ts-check at the top of your JavaScript files.
+
+## Running your packages:
+- **ESLint:**
+    ```sh
+    npx eslint your-file.js
+
+- **TypeScript:**
+    ```sh
+    npx tsc --noEmit
+
+
+ ## Contributing
+ Feel free to fork this repository and create a pull request with your enhancements.
+ 
