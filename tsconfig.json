@@ -1,7 +1,20 @@
 {
-    "compilerOptions": {
-      "checkJs": true,
-      "allowJs": true
-    },
-    "include": ["**/*.js"]
+  "compilerOptions": {
+    // Enable type checking for JavaScript files
+    "checkJs": true,
+    // Allow JavaScript files to be compiled
+    "allowJs": true,
+    // Include type definitions from DefinitelyTyped (for better IntelliSense)
+    "types": ["node"],
+    // Set the target ECMAScript version
+    "target": "es6",
+    // Specify the module system
+    "module": "commonjs",
+    // Ensure that default and named imports work correctly
+    "esModuleInterop": true,
+    // Allow usage of async/await and other ESNext features
+    "lib": ["es2015", "esnext"]
+  },
+  // Include all JavaScript files in the project
+  "include": ["**/*.js"]
 }
