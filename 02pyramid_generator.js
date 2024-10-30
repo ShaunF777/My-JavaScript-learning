@@ -22,5 +22,6 @@ export let inverted = true;
  * @param {number} rowCount - The total number of rows.
  * @returns {string} The padded row.*/
 export function padRow(rowNumber, rowCount) {
-    return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+    return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) 
+    + " ".repeat(rowCount - rowNumber);
 }
