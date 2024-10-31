@@ -80,6 +80,12 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;"
+  },
+  {
+    name: "win",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;"
   }
 ];
 
@@ -184,11 +190,12 @@ function goFight() {
 }
 /**Add innertext for the attack, and reduce player health according to monster's damage level. 
  * Reduce monsterHealth according to currentweapon damage and player xp. 
- * Update health, and call lose(), or defeatMonster(), or if ts the Dragon winGame()  */
+ * Update health, and call lose(), or defeatMonster(), or if ts the Dragon winGame().
+ * Additional: Give monsters a dynamic attack value getMonsterAttackValue(monsters[fighting].level); */
 function attack() {
   text.innerText = "The "+ monsters[fighting].name +" attacks.";
   text.innerText += " You attack it with your "+ weapons[currentWeaponIndex].name +".";
-  health -= monsters[fighting].level;
+  health -= getMonsterAttackValue(monsters[fighting].level);
   monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random()* xp) + 1;
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
@@ -201,6 +208,15 @@ function attack() {
       defeatMonster();
     }
   }
+}
+
+/**The attack of the monster will be based on the monster's level and the player's xp.
+ * Use ternary operator that returns hit if hit is greater than 0, or returns 0 if it is not.
+*/
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  console.log(hit);
+  return hit > 0 ? hit : 0
 }
   
 function dodge() {
@@ -216,10 +232,14 @@ function defeatMonster() {
   xpText.innerText = xp;
   update(locations[4])
 }
- /**TODO make 6th loacation
-  * update to locations[5] */
+ /** update to locations[5] */
 function lose() {
   update(locations[5]);
+}
+
+/** update to locations[6] */
+function winGame() {
+  update(locations[6]);
 }
 
 function restart() {
