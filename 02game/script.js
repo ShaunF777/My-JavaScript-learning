@@ -189,14 +189,19 @@ function goFight() {
   monsterHealthText.innerText = monsterHealth; 
 }
 /**Add innertext for the attack, and reduce player health according to monster's damage level. 
- * Reduce monsterHealth according to currentweapon damage and player xp. 
+ * Subject to isMonsterHit(), reduce monsterHealth according to currentweapon damage and player xp. 
  * Update health, and call lose(), or defeatMonster(), or if ts the Dragon winGame().
- * Additional: Give monsters a dynamic attack value getMonsterAttackValue(monsters[fighting].level); */
+ * Additional: 
+ * Give monsters a dynamic attack value getMonsterAttackValue(monsters[fighting].level);
+ */
 function attack() {
   text.innerText = "The "+ monsters[fighting].name +" attacks.";
   text.innerText += " You attack it with your "+ weapons[currentWeaponIndex].name +".";
-  health -= getMonsterAttackValue(monsters[fighting].level);
-  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random()* xp) + 1;
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random()* xp) + 1;
+  } else {
+    text.innerText += " You miss.";
+  }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
@@ -208,6 +213,13 @@ function attack() {
       defeatMonster();
     }
   }
+  /**On every attack, there should be a 10% chance that the player's weapon breaks. All but the 'stick' 
+   * Add message while, removing the latest weapon using inventory.pop(), 
+   * then update currentWeaponIndex. */
+  if (Math.random() <= .1  && inventory.length !== 1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeaponIndex--
+  }
 }
 
 /**The attack of the monster will be based on the monster's level and the player's xp.
@@ -217,6 +229,12 @@ function getMonsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
   console.log(hit);
   return hit > 0 ? hit : 0
+}
+
+/**isMonsterHit function for attack(), helps wonded player
+ * Return the boolean result of the comparison Math.random() > .2. OR health < 20 */
+function isMonsterHit() {
+  return Math.random() > .2 || health < 20;
 }
   
 function dodge() {
