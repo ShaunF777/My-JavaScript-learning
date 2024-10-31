@@ -74,6 +74,12 @@ const locations = [
     "button functions": [goTown, goTown, goTown],
     /** Use escaping single quotes to allow "Arg!" in the string */
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+  },
+  {
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. &#x2620;"
   }
 ];
 
@@ -82,7 +88,9 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-/**After a monster is defeated, the monster's stat box should no longer display. */
+/**After a monster is defeated, the monster's stat box should no longer display. 
+ * for the &#x2620; emoticon text to properly display on the page, use the innerHTML property
+*/
 function update(location) {
     monsterStats.style.display = 'none';
     button1.innerText = location["button text"][0];
@@ -91,7 +99,7 @@ function update(location) {
     button1.onclick = location["button functions"][0];
     button2.onclick = location["button functions"][1];
     button3.onclick = location["button functions"][2];
-    text.innerText = location.text;
+    text.innerHTML = location.text;
 }
 
 function goTown() {
@@ -176,7 +184,7 @@ function goFight() {
 }
 /**Add innertext for the attack, and reduce player health according to monster's damage level. 
  * Reduce monsterHealth according to currentweapon damage and player xp. 
- * Update health, and call lose function */
+ * Update health, and call lose(), or defeatMonster(), or if ts the Dragon winGame()  */
 function attack() {
   text.innerText = "The "+ monsters[fighting].name +" attacks.";
   text.innerText += " You attack it with your "+ weapons[currentWeaponIndex].name +".";
@@ -187,7 +195,11 @@ function attack() {
   if (health <= 0) {
     return lose();
   } else if (monsterHealth <= 0) {
-    defeatMonster()
+    if (fighting === 2){
+      winGame();
+    } else {
+      defeatMonster();
+    }
   }
 }
   
