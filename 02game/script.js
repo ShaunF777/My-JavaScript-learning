@@ -107,57 +107,89 @@ function goTown() {
     }
   }
   
-  /**Once a player has the best weapon, they cannot buy another one.  */
-  function buyWeapon() {
-    if (currentWeaponIndex < weapons.length - 1) {
-      if (gold >= 30) {
-        gold -= 30;
-        currentWeaponIndex++;
-        goldText.innerText = gold;
-        let newWeapon = weapons[currentWeaponIndex].name;
-        text.innerText = "You now have a " + newWeapon + ".";
-        inventory.push(newWeapon);
-        text.innerText += " In your inventory you have: " + inventory;
-      } else {
-        text.innerText = "You do not have enough gold to buy a weapon.";
-      }
-    } else {
-      text.innerText = "You already have the most powerful weapon!";
-      button2.innerText = "Sell weapon for 15 gold";
-      button2.onclick = sellWeapon;
-    }
-  }
-  function sellWeapon() {
-    if (inventory.length > 1) {
-      gold += 15;
+/**Once a player has the best weapon, they cannot buy another one.  */
+function buyWeapon() {
+  if (currentWeaponIndex < weapons.length - 1) {
+    if (gold >= 30) {
+      gold -= 30;
+      currentWeaponIndex++;
       goldText.innerText = gold;
-      let currentWeapon = inventory.shift();
-      text.innerText = "You sold a " + currentWeapon + ".";
+      let newWeapon = weapons[currentWeaponIndex].name;
+      text.innerText = "You now have a " + newWeapon + ".";
+      inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
     } else {
-      text.innerText = "Don't sell your only weapon!";
+      text.innerText = "You do not have enough gold to buy a weapon.";
     }
+  } else {
+    text.innerText = "You already have the most powerful weapon!";
+    button2.innerText = "Sell weapon for 15 gold";
+    button2.onclick = sellWeapon;
   }
-  
-  function fightSlime() {
-    fighting = 0;
-    goFight();
-  }
-  
-  function fightBeast() {
-    fighting = 1;
-    goFight();
-  }
-  
-  function fightDragon() {
-    fighting = 2;
-    goFight();
-  }
+}
 
-  function attack() {
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+    let currentWeapon = inventory.shift();
+    text.innerText = "You sold a " + currentWeapon + ".";
+    text.innerText += " In your inventory you have: " + inventory;
+  } else {
+    text.innerText = "Don't sell your only weapon!";
+  }
+}
 
+function fightSlime() {
+  fighting = 0;
+  goFight();
+}
+
+function fightBeast() {
+  fighting = 1;
+  goFight();
+}
+
+function fightDragon() {
+  fighting = 2;
+  goFight();
+}
+/**Initially, monsterStats are hidden with CSS. On "Fight dragon" button click, display them 
+ * using monsterStats.style.display.*/
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.style.display = 'block';
+  /**update the text for the current monster's name and health */
+  monsterName.innerText = monsters[fighting].name;
+  monsterHealthText.innerText = monsterHealth; 
+}
+/**Add innertext for the attack, and reduce player health according to monster's damage level. 
+ * Reduce monsterHealth according to currentweapon damage and player xp. 
+ * Update health, and call lose function */
+function attack() {
+  text.innerText = "The "+ monsters[fighting].name +" attacks.";
+  text.innerText += " You attack it with your "+ weapons[currentWeaponIndex].name +".";
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random()* xp) + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    return lose();
+  } else if (monsterHealth <= 0) {
+    defeatMonster()
   }
+}
   
-  function dodge() {
-  
-  }
+function dodge() {
+  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+}
+
+/**Add to gold according to monsters level */
+function defeatMonster() {
+
+}
+
+function lose() {
+
+}
