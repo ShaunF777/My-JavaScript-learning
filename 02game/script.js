@@ -55,7 +55,7 @@ const locations = [
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store."
-  }
+  },
   {
     name: "cave",
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
@@ -203,6 +203,7 @@ function goFight() {
 function attack() {
   text.innerText = "The "+ monsters[fighting].name +" attacks.";
   text.innerText += " You attack it with your "+ weapons[currentWeaponIndex].name +".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
     monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random()* xp) + 1;
   } else {
@@ -234,7 +235,7 @@ function attack() {
 function getMonsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
   console.log(hit);
-  return hit > 0 ? hit : 0
+  return hit > 0 ? hit : 0;
 }
 
 /**isMonsterHit function for attack(), helps wonded player
