@@ -47,6 +47,7 @@ const locations = [
     name: "town square",
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
+    /** Use escaping forward slashes to allow "Store" in the string */
     text: "You are in the town square. You see a sign that says \"Store\"."
   },
   {
@@ -71,7 +72,8 @@ const locations = [
     name: "kill monster",
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
     "button functions": [goTown, goTown, goTown],
-    text: "The monster screams Arg! as it dies. You gain experience points and find gold."
+    /** Use escaping single quotes to allow "Arg!" in the string */
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
   }
 ];
 
@@ -80,7 +82,9 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
+/**After a monster is defeated, the monster's stat box should no longer display. */
 function update(location) {
+    monsterStats.style.display = 'none';
     button1.innerText = location["button text"][0];
     button2.innerText = location["button text"][1];
     button3.innerText = location["button text"][2];
@@ -161,7 +165,7 @@ function fightDragon() {
   goFight();
 }
 /**Initially, monsterStats are hidden with CSS. On "Fight dragon" button click, display them 
- * using monsterStats.style.display.*/
+ * using monsterStats.style.display */
 function goFight() {
   update(locations[3]);
   monsterHealth = monsters[fighting].health;
@@ -200,7 +204,20 @@ function defeatMonster() {
   xpText.innerText = xp;
   update(locations[4])
 }
-
+ /**TODO make 6th loacation
+  * update to locations[5] */
 function lose() {
+  update(locations[5]);
+}
 
+function restart() {
+  xp = 0;
+  health = 100;
+  gold = 50;
+  currentWeaponIndex = 0;
+  inventory = ["stick"];
+  xpText.innerText = xp;
+  healthText.innerText = health;
+  goldText.innerText = gold;
+  goTown()
 }
