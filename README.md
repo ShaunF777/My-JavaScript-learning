@@ -21,7 +21,7 @@ code quality tools and IDEs to better understand your code, offering improved au
 suggestions and warnings about deprecated usage or potential errors.
 
 - **Here are a few essential tags to incorporate**:
-    ```jsdoc
+    ```js
     @param {number}: Type to be passed into function.
     @returns {string}: Type to be returned by function.
     @constructor: Marks a function as a constructor.
