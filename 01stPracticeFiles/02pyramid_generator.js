@@ -25,3 +25,29 @@ export function padRow(rowNumber, rowCount) {
     return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) 
     + " ".repeat(rowCount - rowNumber);
 }
+
+/**
+ * Generates a pyramid or inverted pyramid of characters.
+ * @param {number} rowCount - The total number of rows in the pyramid.
+ * @param {string} char - The character to use for building the pyramid.
+ * @param {boolean} inverted - Whether to invert the pyramid.
+ * @returns {string[]} An array of strings, each representing a row of the pyramid.
+ */
+export function generatePyramid(rowCount, char, inverted) {
+  const rows = [];
+  for (let i = 1; i <= rowCount; i++) {
+    const rowNumber = inverted ? rowCount - i + 1 : i;
+    rows.push(
+      " ".repeat(rowCount - rowNumber) +
+      char.repeat(2 * rowNumber - 1) +
+      " ".repeat(rowCount - rowNumber)
+    );
+  }
+  return rows;
+}
+
+// Usage example: Standard pyramid
+generatePyramid(5, "#", false);
+
+// Usage example: Inverted pyramid
+generatePyramid(5, "#", true);

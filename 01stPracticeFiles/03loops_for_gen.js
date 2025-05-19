@@ -1,3 +1,9 @@
+/**
+ * Demonstrates generating pyramid rows using different loop types.
+ * Uses:
+ * @param {number} count - The number of rows for the pyramid.
+ * @param {function(number, number): string} padRow - Function to generate a single row.
+ */
 import { count, rows, padRow } from './02pyramid_generator.js'
 
 /**Use different types of loops */

@@ -1,6 +1,10 @@
 /**Dynamically build a set of rows with padding and characters, 
- * creating either an inverted or standard structure based on the inverted boolean. */
-
+ * creating either an inverted or standard structure based on the inverted boolean. 
+ * @param {number} count - The total number of rows for the pyramid.
+ * @param {Array<string>} rows - The array to hold each row of the pyramid.
+ * @param {boolean} inverted - Whether to invert the pyramid (true for inverted).
+ * @param {function(number, number): string} padRow - Function to generate a single padded row.
+ */
 import { count, rows, inverted, padRow } from './02pyramid_generator.js'
 
 /**Loop through each row number from 1 to the total count*/

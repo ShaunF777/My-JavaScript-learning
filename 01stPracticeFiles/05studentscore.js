@@ -1,5 +1,9 @@
-/**Calculate the average score for the class.
-Complete the getAverage function which takes in an array of test scores and returns the average score. */
+/**Calculate the average score for the class. Complete the getAverage 
+ * function which takes in an array of test scores and returns the average score. 
+ * Calculate the average score for the class.
+ * @param {number[]} scores - An array of test scores.
+ * @returns {number} The average score.
+ */
 function getAverage(scores) {
     let total = 0;
     for (const score of scores){
@@ -12,7 +16,11 @@ function getAverage(scores) {
   console.log(getAverage([92, 88, 12, 77, 57, 100, 67, 38, 97, 89]));
   console.log(getAverage([45, 87, 98, 100, 86, 94, 67, 88, 94, 95]));
 
-   /**Convert the student score to a letter grade. */
+   /**
+   * Convert the student score to a letter grade.
+   * @param {number} score - The student's numeric score.
+   * @returns {string} The letter grade.
+   */
   function getGrade(score) {
     if (score === 100) {
         return "A++";
@@ -32,7 +40,10 @@ function getAverage(scores) {
   console.log(getGrade(56));
 
   /**Takes a student score as a parameter. This function should return true if 
-   * the student has a passing grade and false if they do not. */
+   * the student has a passing grade and false if they do not. 
+   * @param {number} score - The student's numeric score.
+   * @returns {boolean} True if the student passed, false otherwise.
+   */
   function hasPassingGrade(score) {
     return getGrade(score) !== "F"
   }
@@ -40,9 +51,12 @@ function getAverage(scores) {
   console.log(hasPassingGrade(100));
   console.log(hasPassingGrade(53));
   console.log(hasPassingGrade(87));
-
-  /**The studentMsg function has totalScores and studentScore for parameters. 
-   * The function should return a string representing a message to the student. */
+  /**
+   * Returns a message to the student about their performance.
+   * @param {number[]} totalScores - Array of all student scores in the class.
+   * @param {number} studentScore - The student's own score.
+   * @returns {string} A message about the student's grade and class average.
+   */
   function studentMsg(totalScores, studentScore) {
     if (getGrade(studentScore) !== "F") {
       return "Class average: " + getAverage   (totalScores) + ". Your grade: " + getGrade(studentScore) + ". You passed the course.";
