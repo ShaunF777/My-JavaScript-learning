@@ -1,18 +1,17 @@
 {
-    "plugins": ["jsdoc"],
-    "extends": ["eslint:recommended", "plugin:jsdoc/recommended"],
-    "rules": {
-      "jsdoc/check-alignment": "error", // Enforce JSDoc comments alignment
-      "jsdoc/check-param-names": "error", // Check that parameter names match those in the function declaration
-      "jsdoc/check-tag-names": "error", // Ensure that JSDoc tags exist
-      "jsdoc/check-types": "error", // Enforce using consistent types
-      "jsdoc/require-jsdoc": ["error", { // Require JSDoc comments for certain nodes
-        "require": {
-          "FunctionDeclaration": true,
-          "MethodDefinition": true,
-          "ClassDeclaration": true
-        }
-      }]
-    }
+  "plugins": ["jsdoc"],
+  "extends": ["eslint:recommended", "plugin:jsdoc/recommended"],
+  "rules": {
+    "jsdoc/check-alignment": "error", 
+    "jsdoc/check-param-names": "error", 
+    "jsdoc/check-types": "error", 
+    "jsdoc/require-jsdoc": ["error", { 
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true
+      }
+    }]
   }
+}
   

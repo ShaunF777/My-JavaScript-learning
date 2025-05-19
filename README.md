@@ -21,7 +21,7 @@ code quality tools and IDEs to better understand your code, offering improved au
 suggestions and warnings about deprecated usage or potential errors.
 
 - **Here are a few essential tags to incorporate**:
-    ```sh
+    ```jsdoc
     @param {number}: Type to be passed into function.
     @returns {string}: Type to be returned by function.
     @constructor: Marks a function as a constructor.
@@ -29,7 +29,50 @@ suggestions and warnings about deprecated usage or potential errors.
     @throws or @exception: Documents an exception thrown by a function.
     @see: Provides a reference to another symbol in the documentation.
     @todo: Highlights tasks to be completed in the code.
+    ```
+- > 💡 Use these JSDoc tags directly in your .js code as comments above your variables, functions, classes, or methods and even files.
+They help document your code and enable better IntelliSense, type checking, and documentation generation. See example below:
+    ```js
+    /**
+    * Represents a simple bank account.
+    * @constructor
+    * @param {string} owner - The name of the account owner.
+    * @param {number} balance - The initial balance of the account.
+    */
+    function BankAccount(owner, balance) {
+    this.owner = owner;
+    this.balance = balance;
 
+    /**
+    * Deposits money into the account.
+    * @param {number} amount - The amount to deposit.
+    * @returns {number} The new balance.
+    */
+    this.deposit = function(amount) {
+        this.balance += amount;
+        return this.balance;
+    };
+
+    /**
+    * Withdraws money from the account.
+    * @param {number} amount - The amount to withdraw.
+    * @returns {number} The new balance.
+    * @throws {Error} If the withdrawal amount exceeds the balance.
+    */
+    this.withdraw = function(amount) {
+        if (amount > this.balance) {
+        throw new Error("Insufficient funds");
+        }
+        this.balance -= amount;
+        return this.balance;
+    };
+    }
+
+    // Example usage:
+    const myAccount = new BankAccount("Shaun", 100);
+    myAccount.deposit(50);   // 150
+    myAccount.withdraw(30);  // 120
+    ```
 ## Why ESLint with JSDoc:
 - **Purpose:** Enforces consistent JSDoc comments and validates them against the code.
 - **Benefits:**
@@ -53,17 +96,19 @@ suggestions and warnings about deprecated usage or potential errors.
 1. **Clone the repository**:
    ```sh
    git clone git@github.com:ShaunF777/My-JavaScript_learning.git
-   cd repo-name
+   cd My-JavaScript_learning
+   ```
 
-2.  **Install JSDoc**:
+2.  **Install all dependencies including JsDoc, ESlint & TypeScript**:
     ```sh
     npm install --save-dev jsdoc
+    ```
 
 3. **Update package.json in your project root with this script**:
-    NOTE: Ive only added from where it sais "script", yours may look different. 
+    > 💥 Ive only added from where it sais "scripts", yours may look different. 
     "scripts": This section allows you to define custom commands that you can run using npm run <script-name>.
     "docs": This script runs jsdoc -r . to generate documentation recursively for all files in the project directory.
-    ```sh
+    ```json
     {
         "devDependencies": {
             "eslint": "^9.13.0",
@@ -72,27 +117,29 @@ suggestions and warnings about deprecated usage or potential errors.
             "typescript": "^5.6.3"
         },
         "scripts": {
-            "docs": "jsdoc -r ."
+            "docs": "jsdoc -r 01stPracticeFiles"
         }
     }
+    ```
 
-4. **Install ESLint dependencies**:
+4. **Install ESLint and its jsdoc plugin**:
     ```sh
     npm install eslint --save-dev
     npm install eslint-plugin-jsdoc --save-dev
+    ```
 
 5. **Create or update .eslintrc.json in your project root**:
-    NOTE: This configuration should enhance your workflow by ensuring your JSDoc comments are aligned, and your types are consistent.
-    ```sh
+    > 🚀This configuration should enhance your workflow by ensuring your JSDoc comments are aligned, and your types are consistent. Remove the comments if copying this code.
+    ```json
     {
     "plugins": ["jsdoc"],
     "extends": ["eslint:recommended", "plugin:jsdoc/recommended"],
     "rules": {
-        "jsdoc/check-alignment": "error",
-        "jsdoc/check-param-names": "error",
-        "jsdoc/check-tag-names": "error",
-        "jsdoc/check-types": "error",
-        "jsdoc/require-jsdoc": ["error", {
+        "jsdoc/check-alignment": "error", // Enforce JSDoc comments alignment
+        "jsdoc/check-param-names": "error", // Check that parameter names match those in the function declaration
+        "jsdoc/check-tag-names": "error", // Ensure that JSDoc tags exist
+        "jsdoc/check-types": "error", // Enforce using consistent types
+        "jsdoc/require-jsdoc": ["error", { // Require JSDoc comments for certain nodes
         "require": {
             "FunctionDeclaration": true,
             "MethodDefinition": true,
@@ -101,14 +148,16 @@ suggestions and warnings about deprecated usage or potential errors.
         }]
     }
     }
+    ```
 
 6. **Install  dependencies**:
     ```sh
     npm install --save-dev typescript
     npm install @types/node --save-dev
+    ```
 
 7. **Create or update tsconfig.json in your project root**:
-    ```sh
+    ```json
     {
         "compilerOptions": {
             "checkJs": true,
@@ -116,9 +165,11 @@ suggestions and warnings about deprecated usage or potential errors.
         },
         "include": ["**/*.js"]
     }
+    ```
 
 8. **This is what my tsconfig.json looks like after im done**:
-    ```sh
+    > Remove the comments if copying this code.
+    ```json
     {
       "compilerOptions": {
         // Enable type checking for JavaScript files
@@ -140,33 +191,38 @@ suggestions and warnings about deprecated usage or potential errors.
       // Include all JavaScript files in the project
       "include": ["**/*.js"]
     }
+    ```
 
-8. **Enable type checking**: Add // @ts-check at the top of your JavaScript files.
+9. **Enable type checking in your JS files**:  
+   Add `// @ts-check` at the top of each `.js` file you want TypeScript to check.
 
 ## Running your packages: 
-Note: This will generate a out/ directory by default, containing your project’s documentation in HTML format. 
+> 👀 This will generate an out/ directory by default, containing your project’s documentation in HTML format. 
 You can view this by opening the index.html file in a web browser.
 - **JSDoc:** 
     ```sh
     npm run docs
+    ```
 
 - **ESLint:**
     ```sh
     npx eslint your-file.js
+    ```
 
 - **TypeScript:**
     ```sh
     npx tsc --noEmit
+    ```
 
-## Use Nodemon automatic restart while scripting:   
+## Use Nodemon for automatic restart while scripting:   
 1. **Install  dependencies**:
     ```sh
     npm install -g nodemon
+    ```
 
 2. **Now run your code with nodemon instead of node**:
     ```sh
     nodemon app.js
+    ```
 
-## Contributing
- Feel free to fork this repository and create a pull request with your enhancements.
  

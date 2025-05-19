@@ -1,12 +1,12 @@
 {
   "devDependencies": {
-    "@types/node": "^22.8.2",
-    "eslint": "^9.13.0",
-    "eslint-plugin-jsdoc": "^50.4.3",
+    "@types/node": "^22.15.18",
+    "eslint": "^9.26.0",
+    "eslint-plugin-jsdoc": "^50.6.17",
     "jsdoc": "^4.0.4",
-    "typescript": "^5.6.3"
+    "typescript": "^5.8.3"
   },
   "scripts": {
-    "docs": "jsdoc -r ."
+    "docs": "jsdoc -r 01stPracticeFiles 02game"
   }
 }
