@@ -7,6 +7,6 @@
     "typescript": "^5.8.3"
   },
   "scripts": {
-    "docs": "jsdoc -r 01stPracticeFiles 02game"
+    "docs": "jsdoc -r 01stPracticeFiles 02game -d JSDoc_Output"
   }
 }
